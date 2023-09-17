@@ -4,12 +4,12 @@ public class Menu
 {
     private int SelectedIndex;
     private List<Option> Options;
-    private string Prompt;
+    private string Title;
     private MenuPosition Position;
 
-    public Menu(string promt, IEnumerable<Option> options, MenuPosition position = MenuPosition.Center)
+    public Menu(string title, IEnumerable<Option> options, MenuPosition position = MenuPosition.Center)
     {
-        Prompt = promt;
+        Title = title;
         Options = options.ToList();
         SelectedIndex = 0;
         Position = position;
@@ -21,8 +21,8 @@ public class Menu
         var windowWidth = Console.WindowWidth;
         var maxOptionNameLength = Options.Max(option => option.Name.Length);
 
-        var verticalPosition = 0;
-        var horizontalPosition = 0;
+        int verticalPosition;
+        int horizontalPosition;
 
         switch (position)
         {
@@ -71,19 +71,24 @@ public class Menu
 
     private void DisplayOptions(MenuPosition position)
     {
-        Console.Clear();
+        Close();
         var maxOptionNameLength = Options.Max(option => option.Name.Length);
 
-        var coordinates = GetCoordinates(position);
-        var horizontalPosition = coordinates.x;
-        var verticalPosition = coordinates.y;
+        var (horizontalPosition, verticalPosition) = GetCoordinates(position);
+        var verticalOffset = 1;
 
         Console.SetCursorPosition(horizontalPosition, verticalPosition);
+        Console.WriteLine(Title);
 
         for (var i = 0; i < Options.Count; i++)
         {
             var option = Options[i];
             var isSelected = (i == SelectedIndex);
+            
+            if (verticalPosition + verticalOffset >= Console.BufferHeight)
+                break;
+
+            Console.SetCursorPosition(horizontalPosition, verticalPosition + verticalOffset);
 
             Console.BackgroundColor = isSelected ? ConsoleColor.White : Console.BackgroundColor;
             Console.ForegroundColor = isSelected ? ConsoleColor.Black : Console.ForegroundColor;
@@ -92,12 +97,11 @@ public class Menu
             Console.Write(option.Name.PadRight(maxOptionNameLength));
 
             if (isSelected && !string.IsNullOrEmpty(option.Description))
-            {
                 Console.Write(" -> " + option.Description);
-            }
 
             Console.ResetColor();
-            Console.WriteLine();
+
+            verticalOffset++;
         }
     }
 
@@ -148,7 +152,7 @@ public class Menu
         return "Escape";
     }
 
-    public void Close() => Console.Clear();
+    public static void Close() => Console.Clear();
 }
 
 public enum MenuPosition
