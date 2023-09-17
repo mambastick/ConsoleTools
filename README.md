@@ -9,7 +9,8 @@
 // Создание опций (кнопок) меню
 List<Option> options = new List<Option>()
 {
-  new Option(name: "Начать игру", description: "Этот пункт меню запустит игру."), // description является необязательным параметром.
+  // description является необязательным параметром.
+  new Option(name: "Начать игру", description: "Этот пункт меню запустит игру."), 
   new Option("Настройки"),
   new Option("Выход"),
 };
