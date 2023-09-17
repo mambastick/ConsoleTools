@@ -21,8 +21,7 @@ public class ProgressBar
         BorderColor = borderColor;
         Information = string.Empty;
     }
-
-
+    
     public void Next(int value)
     {
         if (value < 0 || value > Total)
@@ -33,6 +32,7 @@ public class ProgressBar
 
     public void Draw()
     {
+        SetCursorPosition(0, CursorTop);
         var progress = (double)Current / Total;
         var progressBarLength = (int)(progress * BarLength);
 
