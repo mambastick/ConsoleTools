@@ -168,12 +168,12 @@ public enum MenuPosition
     BottomRight
 }
 
-public class Option
+public abstract class Option
 {
     public readonly string Name;
     public readonly string? Description;
 
-    public Option(string name, string? description = null)
+    protected Option(string name, string? description = null)
     {
         Name = name;
         Description = description;
