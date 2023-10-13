@@ -127,6 +127,7 @@ public class Menu
 
     public string Show()
     {
+        Close();
         ConsoleKey key;
         do
         {
@@ -143,9 +144,7 @@ public class Menu
                     break;
                 case ConsoleKey.Enter:
                     var selectedOption = GetCurrentOption();
-                    if (selectedOption != null)
-                        return selectedOption.Name;
-                    break;
+                    return selectedOption.Name;
             }
         } while (key != ConsoleKey.Escape);
 
@@ -168,14 +167,18 @@ public enum MenuPosition
     BottomRight
 }
 
-public abstract class Option
+public class Option
 {
     public readonly string Name;
     public readonly string? Description;
+    private readonly Action Action;
 
-    protected Option(string name, string? description = null)
+    public Option(string name, Action action, string? description = null)
     {
         Name = name;
+        Action = action;
         Description = description;
     }
+
+    public void Execute() => Action.Invoke();
 }
