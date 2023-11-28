@@ -9,14 +9,19 @@
         <PackageTags>UI;ConsoleUI;ConsoleTool;ProgressBar;Menu;</PackageTags>
         <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
         <Description>Library for creating a graphical interface in the system terminal.</Description>
-        <PackageReadmeFile>C:\Users\tmarr\RiderProjects\MConsoleTools\README.md</PackageReadmeFile>
-        <PackageLicenseFile>C:\Users\tmarr\RiderProjects\MConsoleTools\LICENSE</PackageLicenseFile>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/mambastick/MConsoleTools</RepositoryUrl>
         <Copyright>Copyright (c) Neelov Eugene 2023</Copyright>
-        <PackageIcon>C:\Users\tmarr\RiderProjects\MConsoleTools\logo.png</PackageIcon>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageIcon>logo.png</PackageIcon>
         <RootNamespace>MConsoleTools</RootNamespace>
     </PropertyGroup>
 
-
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)..\LICENSE" Pack="true" PackagePath="/" />
+        <None Include="$(MSBuildThisFileDirectory)..\README.md" Pack="true" PackagePath="/" />
+        <None Include="$(MSBuildThisFileDirectory)..\logo.png" Pack="true" PackagePath="/" />
+    </ItemGroup>
 </Project>
