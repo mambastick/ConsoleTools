@@ -1,6 +1,6 @@
 using static System.Console;
 
-namespace ConsoleTools.ProgressBar;
+namespace MConsoleTools.ProgressBar;
 
 public class ProgressBar
 {

@@ -1,4 +1,4 @@
-﻿namespace ConsoleTools.Menu;
+﻿namespace MConsoleTools.Menu;
 
 public class Menu
 {
