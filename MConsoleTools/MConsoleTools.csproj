@@ -7,9 +7,8 @@
         <Title>MConsoleTools</Title>
         <Authors>mambastick</Authors>
         <PackageTags>UI;ConsoleUI;ConsoleTool;ProgressBar;Menu;</PackageTags>
-        <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
         <Description>Library for creating a graphical interface in the system terminal.</Description>
-        <RepositoryType>git</RepositoryType>
+        <RepositoryType>github</RepositoryType>
         <RepositoryUrl>https://github.com/mambastick/MConsoleTools</RepositoryUrl>
         <Copyright>Copyright (c) Neelov Eugene 2023</Copyright>
         <IncludeContentInPack>true</IncludeContentInPack>
@@ -17,6 +16,7 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageIcon>logo.png</PackageIcon>
         <RootNamespace>MConsoleTools</RootNamespace>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
